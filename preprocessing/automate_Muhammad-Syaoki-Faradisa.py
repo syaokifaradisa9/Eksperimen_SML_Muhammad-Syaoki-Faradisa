@@ -71,7 +71,7 @@ def preprocess_data(df, target_column, project_path, random_state=42, test_size=
         remainder='passthrough'
     )
 
-    # --- Save Preprocessor Pipeline ---
+    # Save Preprocessor Pipeline
     os.makedirs(f"{project_path}", exist_ok=True)
     pipeline_save_path = f"{project_path}/preprocessor.joblib"
     dump(preprocessor, pipeline_save_path)
