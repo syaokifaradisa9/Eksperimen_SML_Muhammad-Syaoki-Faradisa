@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from joblib import dump
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
