@@ -72,8 +72,8 @@ def preprocess_data(df, target_column, project_path, random_state=42, test_size=
     )
 
     # --- Save Preprocessor Pipeline ---
-    os.makedirs(project_path, exist_ok=True)
-    pipeline_save_path = f"{project_path}/preprocessor.joblib"
+    os.makedirs(f"{project_path}/preprocessing", exist_ok=True)
+    pipeline_save_path = f"{project_path}/preprocessing/preprocessor.joblib"
     dump(preprocessor, pipeline_save_path)
 
     # Terapkan pipeline preprocessing pada train dan test
@@ -94,9 +94,9 @@ def preprocess_data(df, target_column, project_path, random_state=42, test_size=
     test_df_final = X_test_processed.copy()
     test_df_final[target_column] = y_test
 
-    os.makedirs(f"{project_path}/aids_preprocessing", exist_ok=True)
-    train_file_path = f"{project_path}/aids_preprocessing/train.csv"
-    test_file_path = f"{project_path}/aids_preprocessing/test.csv"
+    os.makedirs(f"{project_path}/preprocessing/aids_preprocessing", exist_ok=True)
+    train_file_path = f"{project_path}/preprocessing/aids_preprocessing/train.csv"
+    test_file_path = f"{project_path}/preprocessing/aids_preprocessing/test.csv"
 
     train_df_final.to_csv(train_file_path, index=False)
     test_df_final.to_csv(test_file_path, index=False)
