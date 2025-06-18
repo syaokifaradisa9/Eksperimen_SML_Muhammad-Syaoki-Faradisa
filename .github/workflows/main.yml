@@ -40,8 +40,8 @@ jobs:
       - name: Commit and Push Processed Data
         if: steps.preprocess.outputs.preprocessed == 'true'
         run: |
-          git add ./../../preprocessing/aids_preprocessing/train.csv \
-                  ./../../preprocessing/aids_preprocessing/test.csv \
-                  ./../../preprocessing/aids_preprocessing/preprocessor.joblib
+          git add ./preprocessing/aids_preprocessing/train.csv \
+                  ./preprocessing/aids_preprocessing/test.csv \
+                  ./preprocessing/aids_preprocessing/preprocessor.joblib
           git commit -m "feat: Auto-processed data and preprocessor [skip ci]" || echo "No changes to commit"
           git push
