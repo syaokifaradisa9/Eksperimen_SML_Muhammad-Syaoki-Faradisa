@@ -110,9 +110,8 @@ if __name__ == "__main__":
     DATA_INPUT_PATH = '../AIDS_Classification.csv'
     TARGET_COLUMN = 'infected'
     
+    # read data
     df = pd.read_csv(DATA_INPUT_PATH)
-    X_temp = df.drop(TARGET_COLUMN, axis=1)
-
 
     # Memanggil fungsi preprocessing
     X_train_processed, X_test_processed, y_train_res, y_test = preprocess_data(
