@@ -112,6 +112,7 @@ if __name__ == "__main__":
     X_temp = df.drop(TARGET_COLUMN, axis=1)
     smotenc_cat_indices = [1, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17]
 
+    # Memanggil fungsi preprocessing
     X_train_processed, X_test_processed, y_train_res, y_test = preprocess_data(
         df=df,
         target_column=TARGET_COLUMN,
