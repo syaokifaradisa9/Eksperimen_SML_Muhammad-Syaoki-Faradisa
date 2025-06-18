@@ -1,0 +1,48 @@
+name: Preprocess Data and Upload
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "AIDS_Classification.csv"
+      - "preprocessing/automate_Muhammad-Syaoki-Faradisa.py"
+  workflow_dispatch:
+
+jobs:
+  preprocess_and_upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas scikit-learn imblearn joblib numpy
+
+      - name: Run Data Preprocessing
+        id: preprocess
+        working-directory: ./preprocessing
+        run: |
+          mkdir -p aids_preprocessing
+
+          python automate_Muhammad-Syaoki-Faradisa.py
+
+          echo "::set-output name=preprocessed::true"
+          echo "Preprocessing complete. Files generated in aids_preprocessing/ (relative to preprocessing/)"
+
+      - name: Commit and Push Processed Data
+        if: steps.preprocess.outputs.preprocessed == 'true'
+        run: |
+          git add preprocessing/aids_preprocessing/train.csv \
+                  preprocessing/aids_preprocessing/test.csv \
+                  preprocessing/aids_preprocessing/preprocessor.joblib
+          git commit -m "feat: Auto-processed data and preprocessor [skip ci]" || echo "No changes to commit"
+          git push
