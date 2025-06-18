@@ -7,7 +7,6 @@ on:
     paths:
       - "AIDS_Classification.csv"
       - "preprocessing/automate_Muhammad-Syaoki-Faradisa.py"
-  workflow_dispatch:
 
 jobs:
   preprocess_and_upload:
