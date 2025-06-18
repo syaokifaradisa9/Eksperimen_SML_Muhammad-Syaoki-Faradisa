@@ -108,7 +108,6 @@ if __name__ == "__main__":
     DATA_INPUT_PATH = '../AIDS_Classification.csv'
     df = pd.read_csv(DATA_INPUT_PATH)
     TARGET_COLUMN = 'infected'
-    OUTPUT_FOLDER_PATH = 'aids_preprocessing'
 
     X_temp = df.drop(TARGET_COLUMN, axis=1)
     smotenc_cat_indices = [1, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17]
@@ -116,7 +115,7 @@ if __name__ == "__main__":
     X_train_processed, X_test_processed, y_train_res, y_test = preprocess_data(
         df=df,
         target_column=TARGET_COLUMN,
-        project_path=OUTPUT_FOLDER_PATH,
+        project_path=".",
         smotenc_categorical_features_indices=smotenc_cat_indices
     )
 
