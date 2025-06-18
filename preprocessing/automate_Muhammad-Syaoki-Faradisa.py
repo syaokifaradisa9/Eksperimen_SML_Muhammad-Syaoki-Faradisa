@@ -94,6 +94,7 @@ def preprocess_data(df, target_column, project_path, random_state=42, test_size=
     test_df_final = X_test_processed.copy()
     test_df_final[target_column] = y_test
 
+    os.makedirs(f"{project_path}/aids_preprocessing", exist_ok=True)
     train_file_path = f"{project_path}/aids_preprocessing/train.csv"
     test_file_path = f"{project_path}/aids_preprocessing/test.csv"
 
