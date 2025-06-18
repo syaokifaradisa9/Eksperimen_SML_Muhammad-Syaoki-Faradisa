@@ -105,12 +105,13 @@ def preprocess_data(df, target_column, project_path, random_state=42, test_size=
 
 # Program Utama
 if __name__ == "__main__":
-    DATA_INPUT_PATH = '../AIDS_Classification.csv'
-    df = pd.read_csv(DATA_INPUT_PATH)
-    TARGET_COLUMN = 'infected'
-
-    X_temp = df.drop(TARGET_COLUMN, axis=1)
     smotenc_cat_indices = [1, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17]
+    DATA_INPUT_PATH = '../AIDS_Classification.csv'
+    TARGET_COLUMN = 'infected'
+    
+    df = pd.read_csv(DATA_INPUT_PATH)
+    X_temp = df.drop(TARGET_COLUMN, axis=1)
+
 
     # Memanggil fungsi preprocessing
     X_train_processed, X_test_processed, y_train_res, y_test = preprocess_data(
